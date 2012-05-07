@@ -9,7 +9,6 @@
 			body {
 				background-color: #EEEEEE;
 				margin: 0px;
-				overflow: hidden;
 
 				font-family: 'RobotoThin', Helvetica, Arial;
 			}
@@ -77,8 +76,9 @@
 				$('html, body').animate({
 					scrollTop:0
 				}, 1000, function() {
-					parallaxScroll(); // Callback is required for iOS
+					//parallaxScroll(); // Callback is required for iOS
 				});
+				//parallaxScroll();
 				return false;
 			});
 		
@@ -86,17 +86,23 @@
 				$('html, body').animate({
 					scrollTop:$('#contact').offset().top
 				}, 1000, function() {
-					parallaxScroll(); // Callback is required for iOS
+					//parallaxScroll(); // Callback is required for iOS
 				});
+				//parallaxScroll();
 				return false;
 			});
 			
 			
 			
 			function parallaxScroll(){
-			
+				//console.log($('body').scrollTop());
+				cameraOffset = (1000 - ($('body').scrollTop() / 3)) + 100;
 			}
 		
+			$(window).scroll(function() {
+			  console.log("scroll");
+			  parallaxScroll();
+			});
 		});
 		
 		
@@ -196,7 +202,7 @@
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
 			
-			var cameraOffset = 200;
+			var cameraOffset = (1000 - ($('body').scrollTop() / 3)) + 100;
 
 			init();
 			animate();
@@ -247,23 +253,43 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				var container = document.getElementById("particles");
 				container.appendChild( renderer.domElement );
-
 				
-			function locationHashChanged() {
-				console.log(location.hash);
-				if (location.hash === "#home") {
-				   cameraOffset = 200;
-				}else if (location.hash === "#contact") {
-					cameraOffset = 400;
-				}else{
-					cameraOffset = 200;
+				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+				document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+
+
+			}
+
+			function onDocumentMouseMove( event ) {
+
+				mouseX = event.clientX - windowHalfX;
+
+			}
+
+			function onDocumentTouchStart( event ) {
+
+				if ( event.touches.length == 1 ) {
+
+					event.preventDefault();
+
+					mouseX = event.touches[ 0 ].pageX - windowHalfX;
+
 				}
-			}
-
-			window.onhashchange = locationHashChanged;
 
 			}
 
+			function onDocumentTouchMove( event ) {
+
+				if ( event.touches.length == 1 ) {
+
+					event.preventDefault();
+
+					mouseX = event.touches[ 0 ].pageX - windowHalfX;
+
+				}
+
+			}
 
 			function animate() {
 
@@ -276,7 +302,7 @@
 			function render() {
 
 				camera.position.y += (cameraOffset - camera.position.y) * .18;				
-				camera.position.x = 0;
+				camera.position.x += ( mouseX - camera.position.x ) * .05;
 				camera.lookAt( scene.position );
 
 				var i = 0;
