@@ -96,11 +96,10 @@
 			
 			function parallaxScroll(){
 				//console.log($('body').scrollTop());
-				cameraOffset = (1000 - ($('body').scrollTop() / 3)) + 100;
+				cameraOffset = (1000 - ($(window).scrollTop() / 2)) + 100;
 			}
 		
 			$(window).scroll(function() {
-			  console.log("scroll");
 			  parallaxScroll();
 			});
 		});
@@ -190,7 +189,7 @@
 
 		<script>
 
-			var SEPARATION = 70, AMOUNTX = 70, AMOUNTY = 70;
+			var SEPARATION = 70, AMOUNTX = 50, AMOUNTY = 50;
 
 			var container, stats;
 			var camera, scene, renderer;
@@ -202,7 +201,7 @@
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
 			
-			var cameraOffset = (1000 - ($('body').scrollTop() / 3)) + 100;
+			var cameraOffset = (1000 - ($('body').scrollTop() / 2)) + 100;
 
 			init();
 			animate();
@@ -302,7 +301,7 @@
 			function render() {
 
 				camera.position.y += (cameraOffset - camera.position.y) * .18;				
-				camera.position.x += ( mouseX - camera.position.x ) * .05;
+				camera.position.x += ( mouseX - camera.position.x ) * .03;
 				camera.lookAt( scene.position );
 
 				var i = 0;
