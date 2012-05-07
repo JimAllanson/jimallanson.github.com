@@ -25,139 +25,161 @@
 				width:100%;
 				height:100%;
 			}
-			#content{
-				position:absolute;
-				top:0px;
-				bottom:0px;
-				left:0px;
-				right:0px;
-				z-index: 1;
-			}
+			
 			#nav{
 				position: fixed;
-			}
-			#slide{
-				width:10000px;
-
-				position: absolute;
-				top: 120px; 
-				left: 40px;
+				left:0px;
+				width:200px;
+				z-index:4;
 			}
 			
+			#wrapper {
+				position: relative;
+			}
+			
+			#content{
+				z-index: 3;
+				position: relative;
+				max-width: 940px;
+				padding: 0 10px;
+				margin: 0 auto;
+				line-height: 1.7;
+			}
+			
+			
+
+			
 			.page{
-				float:left;
-				height:60%;
-				width:800px;
-				display:inline-block;
+
+				width:90%;
 				
 				background: rgba(230,230,230,0.6);
 				-webkit-box-shadow: 0px 0px 75px rgba(0, 0, 0, 0.12);
 				-moz-box-shadow:    0px 0px 75px rgba(0, 0, 0, 0.12);
 				box-shadow:         0px 0px 75px rgba(0, 0, 0, 0.12);
 				
-				
-				margin:50px 1000px 50px 50px;
 				padding:15px;
+				margin: 105px 0px 200px 0px;
 				
 				box-sizing:border-box;
 				-moz-box-sizing:border-box; /* Firefox */
 				-webkit-box-sizing:border-box; /* Safari */
 			}
+			
+			
+			
 		</style>
 		<script src="Three.js"></script>
-		<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js'></script>
-				<script src="js/jquery.localscroll-min.js" type="text/javascript"></script>
-		<script src="js/jquery.scrollTo-min.js" type="text/javascript"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script> 
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$('a.home').click(function(){
+				$('html, body').animate({
+					scrollTop:0
+				}, 1000, function() {
+					parallaxScroll(); // Callback is required for iOS
+				});
+				return false;
+			});
+		
+			$('a.contact').click(function(){
+				$('html, body').animate({
+					scrollTop:$('#contact').offset().top
+				}, 1000, function() {
+					parallaxScroll(); // Callback is required for iOS
+				});
+				return false;
+			});
+			
+			
+			
+			function parallaxScroll(){
+			
+			}
+		
+		});
+		
+		
+		
+		</script>
 
 	
-	
-	
-		<script type="text/javascript">
-		$(document).ready(function () {
-			$.localScroll.defaults.axis = 'x';
-			$.localScroll({hash:true});
-		});
-		</script>
 		
 	</head>
 	<body>
 		<div id="particles">
 		</div>
-		
-		
-		<div id="content">
+		<div id="wrapper">
 			<div id="nav">
 				<ul>
-					<li><a href="#home">Home</a></li>
-					<li><a href="#contact">Contact</a></li>
+					<li><a class="home" href="#home">Home</a></li>
+					<li><a class="contact" href="#contact">Contact</a></li>
 				</ul>
 			</div>
 			
-			<div id="slide">
-				<div class="page" id="home">
-					<h1>Home</h1>
-	       
-					<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+			<div id="content">
+					<div class="page" id="home">
+						<h1>Home</h1>
+			   
+						<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
 
-					<h2>Header Level 2</h2>
-							   
-					<ol>
-					   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-					   <li>Aliquam tincidunt mauris eu risus.</li>
-					</ol>
+						<h2>Header Level 2</h2>
+								   
+						<ol>
+						   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+						   <li>Aliquam tincidunt mauris eu risus.</li>
+						</ol>
 
-					<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>
+						<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>
 
-					<h3>Header Level 3</h3>
+						<h3>Header Level 3</h3>
 
-					<ul>
-					   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-					   <li>Aliquam tincidunt mauris eu risus.</li>
-					</ul>
+						<ul>
+						   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+						   <li>Aliquam tincidunt mauris eu risus.</li>
+						</ul>
 
-					<pre><code>
-					#header h1 a { 
-						display: block; 
-						width: 300px; 
-						height: 80px; 
-					}
-					</code></pre>
-				</div>
-				
-				
-				<div class="page" id="contact">
-					<h1>Contact</h1>
-	       
-					<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+						<pre><code>
+						#header h1 a { 
+							display: block; 
+							width: 300px; 
+							height: 80px; 
+						}
+						</code></pre>
+					</div>
+					
+					
+					<div class="page" id="contact">
+						<h1>Contact</h1>
+			   
+						<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
 
-					<h2>Header Level 2</h2>
-							   
-					<ol>
-					   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-					   <li>Aliquam tincidunt mauris eu risus.</li>
-					</ol>
+						<h2>Header Level 2</h2>
+								   
+						<ol>
+						   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+						   <li>Aliquam tincidunt mauris eu risus.</li>
+						</ol>
 
-					<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>
+						<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>
 
-					<h3>Header Level 3</h3>
+						<h3>Header Level 3</h3>
 
-					<ul>
-					   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-					   <li>Aliquam tincidunt mauris eu risus.</li>
-					</ul>
+						<ul>
+						   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+						   <li>Aliquam tincidunt mauris eu risus.</li>
+						</ul>
 
-					<pre><code>
-					#header h1 a { 
-						display: block; 
-						width: 300px; 
-						height: 80px; 
-					}
-					</code></pre>
-				</div>
+						<pre><code>
+						#header h1 a { 
+							display: block; 
+							width: 300px; 
+							height: 80px; 
+						}
+						</code></pre>
+					</div>			
 			</div>
-			
 		</div>
-		
 
 
 		<script>
@@ -174,7 +196,7 @@
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
 			
-			var cameraOffset = -500;
+			var cameraOffset = 200;
 
 			init();
 			animate();
@@ -183,7 +205,7 @@
 
 				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
 				camera.position.z = 1000;
-				camera.position.x = cameraOffset;
+				camera.position.y = cameraOffset;
 
 				scene = new THREE.Scene();
 
@@ -230,11 +252,11 @@
 			function locationHashChanged() {
 				console.log(location.hash);
 				if (location.hash === "#home") {
-				   cameraOffset = -500;
+				   cameraOffset = 200;
 				}else if (location.hash === "#contact") {
-					cameraOffset = 500;
+					cameraOffset = 400;
 				}else{
-					cameraOffset = -500;
+					cameraOffset = 200;
 				}
 			}
 
@@ -253,8 +275,8 @@
 
 			function render() {
 
-				camera.position.x += (cameraOffset - camera.position.x) * .18;				
-				camera.position.y = 500;
+				camera.position.y += (cameraOffset - camera.position.y) * .18;				
+				camera.position.x = 0;
 				camera.lookAt( scene.position );
 
 				var i = 0;
